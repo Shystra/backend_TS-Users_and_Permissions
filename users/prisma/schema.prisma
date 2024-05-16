@@ -22,4 +22,3 @@ model User {
   update_at DateTime @updatedAt
   deleted_at DateTime? @db.Date
 }
-
