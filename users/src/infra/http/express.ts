@@ -2,7 +2,7 @@ import express, { Application } from 'express'
 import cors from 'cors';
 
 class ExpressAdapter {
-    private app: Application;
+    public app: Application;
     constructor(){
         this.app = express();
         this.middlewareInit();
