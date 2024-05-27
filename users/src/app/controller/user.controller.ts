@@ -1,28 +1,27 @@
 import { HttpRequest, HttpResponse } from "../../infra/http/httpAdapter"
+import { UserUseCase } from "../useCases/user.useCase";
 
 export class UserController {
-    constructor(){
+    constructor(private readonly userUseCase: UserUseCase) { }
+    getUsers(httpRequest: HttpRequest): HttpResponse {
 
-    }
-    getUsers(httpRequest: HttpRequest): HttpResponse{
-        try{
+
+        try {
             const { id } = httpRequest.query;
-            if(!id){
-                return {
-                    status: 404,
-                    message: 'Id is required',
-                }
-            }
+
+            const response = this.userUseCase.getUsers();
+
+
             return {
                 status: 200,
-                message: `User ${id} found`,
+                message: response,
             }
-        } catch(error){
+        } catch (error) {
             return {
                 status: 500,
                 message: ' Internal server error '
             }
         }
-        
+
     }
 }

@@ -1,6 +1,8 @@
 class UserUseCase {
-    constructor(){
+    constructor() { }
 
+    getUsers() {
+        return 'User found'
     }
 }
 
