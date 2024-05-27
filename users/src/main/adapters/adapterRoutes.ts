@@ -1,0 +1,22 @@
+import { Request, Response } from 'express';
+import { HttpRequest, HttpResponse } from '../../infra/http/httpAdapter';
+
+
+export const adapterRoutes = (controller: any, method: any) => {
+    return async (req: Request, res: Response) => {
+        const httpRequest: HttpRequest = {
+            body: req.body,
+            params: req.params,
+            query: req.query,
+            headers: req.headers
+        }
+        const httpResponse: HttpResponse = await controller[method](httpRequest)
+
+        if(httpResponse.status > 200 && httpResponse.status < 299){
+            res.status(httpResponse.status).json(httpResponse.message);
+
+        } else {
+            res.status(httpResponse.status).json({ error: httpResponse.message });
+        }
+    };
+};
