@@ -45,4 +45,5 @@ model Permissions {
   updated_at DateTime  @updatedAt
   deleted_at DateTime? @db.Date
   User       User[]
-}
+} 
+  

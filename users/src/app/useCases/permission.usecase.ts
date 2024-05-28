@@ -17,7 +17,8 @@ class PermissionUseCase {
 
         // verifica se a permissão ja existe no banco
         const permission = await this.permissionRepository.findByKey(createPermissionDto.key)
-        if(permission) throw new HttpError(400, 'Permission already exists');
+        console.log("🚀 ~ PermissionUseCase ~ create ~ permission:", permission)
+        if(permission && permission.deleted_at === null) throw new HttpError(400, 'Permission already exists');
 
 
         const result = await this.permissionRepository.create(createPermissionDto);

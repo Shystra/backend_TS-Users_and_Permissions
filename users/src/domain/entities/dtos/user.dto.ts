@@ -6,3 +6,12 @@ export class CreateUserDto{
         public readonly permission_id: string,
     ){}
 }
+
+// export class CreateUser{
+//     constructor(
+//         public readonly name: string,
+//         public readonly email: string,
+//         public readonly password: string,
+//         public readonly permission_id: string,
+//     ){}
+// }
