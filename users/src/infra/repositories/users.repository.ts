@@ -11,11 +11,14 @@ class UsersRepositoryPrisma implements UsersRepository{
 
     }
     async create(createUserDto: CreateUserDto): Promise<User>{
-        return await  this.prisma.user.create({
+        const result =  await  this.prisma.user.create({
             data:{
                 ...createUserDto,
             }
-        })
+        });
+        console.log("🚀 ~ UsersRepositoryPrisma ~ create ~ result:", result)
+        return result;
+        
     }
 }
 

@@ -7,4 +7,4 @@ export abstract class UsersRepository{
 
     abstract create(createUserDto:  CreateUserDto): Promise<User>;
 
-}
+} 

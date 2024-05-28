@@ -9,5 +9,6 @@ export const UserRoutes = (router: Router): void => {
     // const userUseCase = new UserUseCase();
     const userController = new UserController(makeUserFactory());
     const prefix = '/users';
-    router.get(prefix + "", adapterRoutes(userController, 'getUsers'));
+    router.post(prefix + '', adapterRoutes(userController, 'create'));
+    // router.get(prefix + "", adapterRoutes(userController, 'getUsers'));
 };
