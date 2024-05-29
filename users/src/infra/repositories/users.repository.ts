@@ -60,6 +60,15 @@ class UsersRepositoryPrisma implements UsersRepository{
         });
         return result.deleted_at !== null
     }
+
+
+
+    async findByEmail(email: string): Promise<User | null> {
+        const user = await this.prisma.user.findUnique({
+            where: { email }
+        });
+        return user;
+    }
 }
 
 export { UsersRepositoryPrisma };

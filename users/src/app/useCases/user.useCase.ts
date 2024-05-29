@@ -26,6 +26,22 @@ class UserUseCase {
         const result = await this.userRepository.delete(id);
         return result;
     }
+
+
+
+
+
+
+
+
+    public async authenticate(email: string, password: string): Promise<User | null> {
+        const user = await this.userRepository.findByEmail(email);
+        if (user && user.password === password) {
+            return user;
+        }
+        return null;
+    }
+
 }
 
 export { UserUseCase };

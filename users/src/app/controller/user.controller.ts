@@ -81,4 +81,29 @@ export class UserController {
             }
         }
     }
+
+
+    async authenticate(httpRequest: HttpRequest): Promise<HttpResponse> {
+        const { email, password } = httpRequest.body;
+        try {
+            const user = await this.userUseCase.authenticate(email, password);
+            if (user) {
+                return {
+                    status: 200,
+                    message: 'Authentication successful',
+                    data: user
+                };
+            } else {
+                return {
+                    status: 401,
+                    message: 'Invalid credentials'
+                };
+            }
+        } catch (error: any) {
+            return {
+                status: 500,
+                message: error.message,
+            };
+        }
+    }
 }
