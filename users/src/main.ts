@@ -7,4 +7,4 @@ const httpServer = new ExpressAdapter();
 const port = process.env.PORT as unknown as number || 3000;
 httpServer.listen(port);
 
-swagger(httpServer.app)
+swagger(httpServer.app) 
